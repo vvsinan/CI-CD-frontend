@@ -22,13 +22,13 @@ jobs:
       run: npm install
 
     - name: Build the Docker image
-      run: docker build -t your-dockerhub-username/nodejs-app:latest .
+      run: docker build -t muhammadsinan/nodejs-app:latest .
 
     - name: Log in to Docker Hub
       run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
     - name: Push Docker image to Docker Hub
-      run: docker push your-dockerhub-username/nodejs-app:latest
+      run: docker push muhammadsinan/nodejs-app:latest
 
   deploy:
     needs: build
