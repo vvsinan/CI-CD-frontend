@@ -81,6 +81,9 @@ jobs:
             ls -l /home/runner/.kube/
             cat /home/runner/.kube/config
 
+    - name: Checkout code
+      uses: actions/checkout@v2
+
     - name: Deploy to Kubernetes
       run: |
         kubectl apply -f deployment.yml
