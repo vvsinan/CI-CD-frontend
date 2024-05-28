@@ -58,6 +58,22 @@ jobs:
       with:
         version: 'latest'
 
+    # - name: Set up kubectl
+    #   uses: azure/kubernetes-set-context@v1
+    #   with:
+    #     kubeconfig: ${{ secrets.KUBE_CONFIG }}
+
+    # - name: Deploy to OKE
+    #   run: |
+    #     kubectl set image deployment/myapp myapp=<DOCKERHUB_USERNAME>/<DOCKERHUB_REPO>:${{ github.sha }}
+    #   env:
+    #     DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+    #     DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+    - name: Debug
+      run: |
+            ls -l /home/runner/.kube/
+            cat /home/runner/.kube/config
+
     - name: Configure kubectl
       run: |
         echo "${{ secrets.KUBE_CONFIG }}" > $HOME/.kube/config
