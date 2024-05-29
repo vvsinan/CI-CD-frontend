@@ -53,6 +53,9 @@ jobs:
       run: |
         echo "${{ secrets.KUBECONFIG }}" | base64 --decode > ~/.kube/config
 
+    - name: Verify kubectl configuration
+      run: kubectl cluster-info
+
     - name: Deploy to OKE
       run: |
         kubectl apply -f deployment.yml
