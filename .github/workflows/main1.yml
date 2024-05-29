@@ -22,10 +22,10 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
-    - name: Build and push Docker image
-      run: |
-        docker build -t ${{ secrets.DOCKER_USERNAME }}/nginx:latest .
-        docker push ${{ secrets.DOCKER_USERNAME }}/nginx:latest
+    # - name: Build and push Docker image
+    #   run: |
+    #     docker build -t ${{ secrets.DOCKER_USERNAME }}/nginx:latest .
+    #     docker push ${{ secrets.DOCKER_USERNAME }}/nginx:latest
 
     - name: Install Python 3 and OCI CLI dependencies
       run: sudo apt-get update && sudo apt-get install -y python3 python3-pip zip
@@ -46,7 +46,7 @@ jobs:
 
     - name: Configure kubectl
       run: |
-        echo "${{ secrets.KUBECONFIG }}" > ~/.kube/config
+        echo "${{ secrets.KUBECONFIG }}" | base64 --decode > ~/.kube/config
 
     - name: Deploy to OKE
       run: |
