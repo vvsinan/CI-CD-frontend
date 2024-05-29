@@ -50,6 +50,21 @@ jobs:
     #   uses: oracle/oci-github-action@v1
     #   with:
     #     oci-config-file: ${{ secrets.OCI_CLI_CONFIG_FILE }}
+    #  OCi setting -----------------------------------
+    - name: Install OCI CLI
+      run: pip3 install oci
+
+    - name: Set up OCI config directory
+      run: |
+        mkdir -p ~/.oci
+        echo "${{ secrets.OCI_CLI_CONFIG_FILE }}" > ~/.oci/config
+        echo "${{ secrets.OCI_CLI_KEY_FILE }}" > ~/.oci/oci_api_key.pem
+        chmod 600 ~/.oci/oci_api_key.pem
+
+    - name: Verify OCI CLI installation
+      run: oci --version
+      
+    #  oci setting ends -----------------------------
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v1
 
