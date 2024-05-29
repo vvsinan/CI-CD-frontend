@@ -60,11 +60,14 @@ jobs:
             # sudo apt-get install -y kubectl
         
     - name: Create .kube directory
-      run: mkdir -p /home/runner/.kube
+      run: |
+           mkdir -p /home/runner/.kube
+           mkdir -p $HOME/.kube
 
     - name: Configure kubectl
       run: |
         echo "${{ secrets.KUBECONFIG }}" | base64 --decode > ~/.kube/config
+        echo "${{ secrets.KUBECONFIG }}" | base64 --decode > $HOME/.kube/config
     - name: print config
       run: cat ~/.kube/config
     - name: Verify kubectl configuration
