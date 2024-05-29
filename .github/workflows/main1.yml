@@ -36,6 +36,8 @@ jobs:
 
     - name: Verify OCI CLI installation
       run: /home/runner/bin/oci --version
+      
+    
 
     - name: Set up OCI config directory
       run: |
@@ -43,6 +45,9 @@ jobs:
         echo "${{ secrets.OCI_CLI_CONFIG_FILE }}" > ~/.oci/config
         echo "${{ secrets.OCI_CLI_KEY_FILE }}" > ~/.oci/oci_api_key.pem
         chmod 600 ~/.oci/oci_api_key.pem
+        
+    - name: Create .kube directory
+      run: mkdir -p /home/runner/.kube
 
     - name: Configure kubectl
       run: |
