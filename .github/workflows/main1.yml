@@ -71,11 +71,11 @@ jobs:
     - name: print config
       run: cat ~/.kube/config
     - name: Verify kubectl configuration
-      run: kubectl get all
+      run:  sudo kubectl get all
       
     - name: Verify kubectl configuration
-      run: kubectl cluster-info dump
+      run: sudo kubectl cluster-info dump
 
     - name: Deploy to OKE
       run: |
-        kubectl apply -f deployment.yml
+          sudo kubectl apply -f deployment.yml
