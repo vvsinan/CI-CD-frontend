@@ -57,6 +57,7 @@ jobs:
     #   uses: azure/setup-kubectl@v1
     #   with:
     #     version: 'latest'
+    #  config updates
 
     - name: Set up kubectl
       uses: azure/kubernetes-set-context@v1
