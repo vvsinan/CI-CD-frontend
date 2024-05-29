@@ -65,7 +65,7 @@ jobs:
         mkdir -p ~/.oci
         echo "${{ secrets.OCI_CLI_CONFIG_FILE }}" > ~/.oci/config
         echo "${{ secrets.OCI_CLI_KEY_FILE }}" > ~/.oci/oci_api_key.pem
-        chmod 600 ~/.oci/oci_api_key.pem
+        sudo chmod 600 ~/.oci/oci_api_key.pem
 
     # - name: Verify OCI CLI installation
     #   run: oci --version
