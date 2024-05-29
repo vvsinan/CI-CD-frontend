@@ -52,6 +52,8 @@ jobs:
     - name: Configure kubectl
       run: |
         echo "${{ secrets.KUBECONFIG }}" | base64 --decode > ~/.kube/config
+    - name: print config
+      run: cat ~/.kube/config
 
     - name: Verify kubectl configuration
       run: kubectl cluster-info
