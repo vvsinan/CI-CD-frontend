@@ -46,10 +46,10 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    # - name: Set up OCI CLI
-    #   uses: oracle/oci-github-action@v1
-    #   with:
-    #     oci-config-file: ${{ secrets.OCI_CLI_CONFIG_FILE }}
+    - name: Set up OCI CLI
+      uses: actions/oci-github-action@v1
+      with:
+        oci-config-file: ${{ secrets.OCI_CLI_CONFIG_FILE }}
 
     - name: Retrieve the OCID of a named compartment in tenancy
       uses: oracle-actions/run-oci-cli-command@v1.2.0
