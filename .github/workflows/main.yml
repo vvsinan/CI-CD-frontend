@@ -47,7 +47,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Set up OCI CLI
-      uses: actions/oci-github-action@v1
+      uses: oracle-actions/run-oci-cli-command@v1
       with:
         oci-config-file: ${{ secrets.OCI_CLI_CONFIG_FILE }}
 
