@@ -46,10 +46,10 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Set up OCI CLI
-      uses: oracle-actions/run-oci-cli-command@v1
-      with:
-        oci-config-file: ${{ secrets.OCI_CLI_CONFIG_FILE }}
+    # - name: Set up OCI CLI
+    #   uses: oracle-actions/run-oci-cli-command@v1
+    #   with:
+    #     oci-config-file: ${{ secrets.OCI_CLI_CONFIG_FILE }}
 
     - name: Retrieve the OCID of a named compartment in tenancy
       uses: oracle-actions/run-oci-cli-command@v1.2.0
@@ -57,6 +57,7 @@ jobs:
       with:
           command: 'iam compartment list --compartment-id-in-subtree=true'
           query: "data[?name=='testing'].id"
+          oci-config-file: ${{ secrets.OCI_CLI_CONFIG_FILE }}
     #  OCi setting -----------------------------------
     - name: Install Python 3
       run: sudo apt-get install -y python3 python3-pip
